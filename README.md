@@ -10,7 +10,8 @@
 
 #前端框架
 - React
-
+- Bootstrap
+  
 #後端技術
 - Node.js
 - express  
@@ -19,7 +20,6 @@
 - Sweetalert2
 - anime.js
 - React-Spring
-- Bootstrap
 - zod
 - Axios
 - moment-timezone
