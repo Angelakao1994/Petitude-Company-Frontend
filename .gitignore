@@ -34,3 +34,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# 忽略 .vscode 文件夹
+.vscode/
+
+# 忽略 README.md 文件
+README.md

@@ -162,7 +162,7 @@ export default function BookingList() {
       console.log('Data to send:', dataToSend)
 
       if (paymentResponse.data.success) {
-        // 資料庫新增成功就處理綠界
+        // 資料庫若新增成功就處理綠界
         const ecpay1Response = await axios.get(
           `http://localhost:3001/ecpay1?${new URLSearchParams({ ...dataToSend, amount: totalPrice })}`,
         )

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Modal } from 'react-bootstrap'
-import Router, { useRouter } from 'next/router'
+import { useRouter } from 'next/router'
 
-// 假设的从数据库中获取推荐方案的函数
+
 const fetchRecommendationFromDatabase = (setup) => {
   const recommendations = {
     warm: {

@@ -72,7 +72,7 @@ export default function Card() {
   }
 
   return (
-    <div title="生前契約" pageName="project-list">
+    <div title="生前契約">
       <div className="row allFont">
         {data.rows.map((card) => (
           <div className="col-md-4 text-center p-2" key={card.project_id}>
@@ -102,20 +102,34 @@ export default function Card() {
                   </h6>
                   {!expandedCards[card.project_id] && (
                     <span
+                      role="button"
+                      tabIndex="0"
                       style={{
                         cursor: 'pointer',
                         fontSize: '1rem',
                         fontWeight: '700',
                       }}
                       onClick={() => toggleExpand(card.project_id)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          toggleExpand(card.project_id)
+                        }
+                      }}
                     >
-                      ...閱讀更多
+                      read more ...
                     </span>
                   )}
                   {expandedCards[card.project_id] && (
                     <span
+                      role="button"
+                      tabIndex="0"
                       style={{ color: 'gray', cursor: 'pointer' }}
                       onClick={() => toggleExpand(card.project_id)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          toggleExpand(card.project_id)
+                        }
+                      }}
                     >
                       <div>
                         <i
@@ -147,7 +161,6 @@ export default function Card() {
                 </div>
 
                 <div className="d-flex justify-content-end align-items-right mb-3">
-
                   <button
                     className={`btnPlan1 btn btn-warning ${Styles.btnPlan1}`}
                     onClick={(e) => {

@@ -197,9 +197,17 @@ export default function LifeCeremonyRecords() {
                             <tr>
                               <th>預約日期: </th>
                               <td>
-                                {new Date(
-                                  r.reservation_date,
-                                ).toLocaleDateString()}
+                                {new Date(r.reservation_date).toLocaleString(
+                                  'zh-TW',
+                                  {
+                                    year: 'numeric',
+                                    month: '2-digit',
+                                    day: '2-digit',
+                                    hour: '2-digit',
+                                    minute: '2-digit',
+                                    hour12: false,
+                                  },
+                                )}
                               </td>
                             </tr>
                             <tr>

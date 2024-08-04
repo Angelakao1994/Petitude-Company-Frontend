@@ -4,7 +4,6 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { useRouter } from 'next/router'
 import { useAuth } from '@/contexts/member/auth-context'
 import swal from 'sweetalert2'
-import StarTwinkle from '@/components/funeral/star'
 import LoginModal from '@/components/member/LoginModal'
 
 export default function AppointmentService() {

@@ -1,43 +1,26 @@
 import React from 'react'
 import { useSpring, animated } from 'react-spring'
 
+// 設定動畫位置
+const generatePositions = (start, end, step, amplitude) => {
+  const positions = []
+  for (let x = start; x <= end; x += step) {
+    positions.push({ x, y: amplitude })
+    positions.push({ x, y: -amplitude })
+  }
+  return positions
+}
+
+// 設定動畫路徑
+const positions = [
+  ...generatePositions(950, 1650, 50, 10),
+  ...generatePositions(1650, 950, -50, -10),
+]
+
 const Cloud = ({ style }) => {
   const props = useSpring({
     loop: true,
-    to: async (next) => {
-      while (true) {
-        await next({ x: 950, y: 10 })
-        await next({ x: 1000, y: -10 })
-        await next({ x: 1050, y: 10 })
-        await next({ x: 1100, y: -10 })
-        await next({ x: 1150, y: 10 })
-        await next({ x: 1200, y: -10 })
-        await next({ x: 1250, y: 10 })
-        await next({ x: 1300, y: -10 })
-        await next({ x: 1350, y: 10 })
-        await next({ x: 1400, y: -10 })
-        await next({ x: 1450, y: 10 })
-        await next({ x: 1500, y: -10 })
-        await next({ x: 1550, y: 10 })
-        await next({ x: 1600, y: -10 })
-        await next({ x: 1650, y: 10 })
-        await next({ x: 1650, y: -10 })
-        await next({ x: 1600, y: 10 })
-        await next({ x: 1550, y: -10 })
-        await next({ x: 1500, y: 10 })
-        await next({ x: 1450, y: -10 })
-        await next({ x: 1400, y: 10 })
-        await next({ x: 1350, y: -10 })
-        await next({ x: 1300, y: 10 })
-        await next({ x: 1250, y: -10 })
-        await next({ x: 1200, y: 10 })
-        await next({ x: 1150, y: -10 })
-        await next({ x: 1100, y: 10 })
-        await next({ x: 1050, y: -10 })
-        await next({ x: 1000, y: 10 })
-        await next({ x: 950, y: -10 })
-      }
-    },
+    to: positions.map((pos) => ({ ...pos, config: { duration: 1000 } })),
     from: { x: 950, y: 0 },
     config: { duration: 1000 },
   })

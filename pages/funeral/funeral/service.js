@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Styles from '@/components/funeral/service/modal.module.css'
 
@@ -135,7 +135,6 @@ export default function Service() {
             padding: 0; /* 移除內邊距 */
             margin: 0; /* 移除外邊距 */
             border: none; /* 移除邊框 */
-            
           }
 
           .list-group-item {

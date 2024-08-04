@@ -61,10 +61,16 @@ export default function RvEdit() {
     // 合併日期和時間
     const combinedDateTime = `${myForm.reservation_date} ${myForm.reservation_time}`
 
+    // 創建一個新的表單對象,包含合併後的日期時間
+    const submittedForm = {
+      ...myForm,
+      reservation_datetime: combinedDateTime,
+    }
+
     // 使用合併後的日期和時間進行驗證
     const result = schemaForm.safeParse({
-      ...myForm,
-      reservation_date: combinedDateTime,
+      ...submittedForm,
+      reservation_date: combinedDateTime, // 為了保持與現有驗證邏輯一致
     })
 
     // 如果驗證失敗
@@ -95,7 +101,7 @@ export default function RvEdit() {
     try {
       const r = await fetch(RV_ADD_POST, {
         method: 'POST',
-        body: JSON.stringify(myForm),
+        body: JSON.stringify(submittedForm),
         headers: {
           'Content-Type': 'application/json',
         },
@@ -154,7 +160,6 @@ export default function RvEdit() {
       endDelay: (el, i, l) => (l - i) * 100, // 動畫結束後的延遲時間：根據元素的索引 `i` 和總數 `l` 計算
     })
 
-    // Cleanup animations on component unmount
     return () => {
       designAnimation.pause()
       dustParticlesAnimation.pause()
@@ -571,60 +576,6 @@ export default function RvEdit() {
               {/* 立即預約按鈕 */}
             </form>
           </div>
-
-          {/* Modal */}
-          {/* <div
-            className="modal fade"
-            id="exampleModalToggle2"
-            aria-hidden="true"
-            aria-labelledby="exampleModalToggleLabel2"
-            tabIndex="-1"
-          >
-            <div className="modal-dialog modal-dialog-centered">
-              <div className="modal-content">
-                <div className="modal-header">
-                  <h5 className="modal-title" id="exampleModalToggleLabel2">
-                    謝謝您的預約, 專人會與您聯繫~
-                  </h5>
-                  <button
-                    type="button"
-                    className="btn-close"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
-                  ></button>
-                </div>
-
-                <div className="modal-body d-flex justify-content-center">
-                  <img
-                    src="/funeral/57.jpg"
-                    alt=""
-                    style={{ width: '200px' }}
-                  />
-                </div>
-
-                <div className="modal-footer d-flex justify-content-center ">
-                  <button
-                    className="btn btn-warning"
-                    data-bs-target="#exampleModalToggle2"
-                    data-bs-toggle="modal"
-                    onClick={() => router.push('/funeral')}
-                    style={{
-                      width: '100%',
-                      backgroundColor: 'orange',
-                      borderRadius: '10px',
-                      color: '#fff5cf',
-                      fontWeight: 'bolder',
-                      display: 'inline-block',
-                      textAlign: 'center',
-                    }}
-                  >
-                    回首頁
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div> */}
-          {/* Modal */}
         </div>
       </div>
       <div className="dogpic">
